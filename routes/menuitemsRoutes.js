@@ -45,7 +45,7 @@ router.get('/menu/:tasteType', async (req, res) => {
     if (
       tasteType === 'Sweet' ||
       tasteType === 'Spicy' ||
-      taste === 'Sour'
+      tasteType === 'Sour'
     ) {
       // Find persons with matching work field
       const response = await Menu.find({ taste: tasteType });
