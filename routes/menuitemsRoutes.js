@@ -35,4 +35,30 @@ router.get('/menu', async (req, res) => {
   }
 });
 
+//comment
+router.get('/menu/:tasteType', async (req, res) => {
+  try {
+    // Read URL parameter
+    const tasteType = req.params.tasteType;
+
+    // Validate allowed work types
+    if (
+      tasteType === 'Sweet' ||
+      tasteType === 'Spicy' ||
+      taste === 'Sour'
+    ) {
+      // Find persons with matching work field
+      const response = await Menu.find({ taste: tasteType });
+
+      console.log('response fetched');
+      res.status(200).json(response);
+    } else {
+      res.status(404).json({ error: 'Invalid taste Type' });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;
