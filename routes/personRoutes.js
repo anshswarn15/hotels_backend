@@ -104,4 +104,5 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+//now we will export routes to use in server.js file
 module.exports = router;
